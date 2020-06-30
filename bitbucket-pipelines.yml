@@ -12,12 +12,12 @@ pipelines:
           - maven
         script: # Modify the commands below to build your repository.
           - mvn -B verify # -B batch mode makes Maven less verbose
-  - step:
-      name: Deploy docker hub
-      deployment: test
-      script:
-        - docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD
-        - docker build -t microbo/mongodatarest:latest .
-        - docker push microbo/mongodatarest:latest
-      services:
-        - docker
+    - step:
+        name: Deploy docker hub
+        deployment: test
+        script:
+          - docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD
+          - docker build -t microbo/mongodatarest:latest .
+          - docker push microbo/mongodatarest:latest
+        services:
+          - docker
