@@ -12,13 +12,8 @@ pipelines:
           - maven
         script: # Modify the commands below to build your repository.
           - mvn -B verify # -B batch mode makes Maven less verbose
-    - step:
-        name: Deploy to test
-        deployment: test
-        # trigger: manual  # Uncomment to make this a manual deployment.
-        script:
           - docker login -u microbo -p ut59q)gU!T+er&@
           - docker build -t microbo/mongodatarest:latest .
           - docker push microbo/mongodatarest:latest
-options:
-  docker: true
+        services:
+          - docker
