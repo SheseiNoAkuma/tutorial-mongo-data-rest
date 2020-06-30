@@ -12,6 +12,8 @@ pipelines:
           - maven
         script: # Modify the commands below to build your repository.
           - mvn -B verify # -B batch mode makes Maven less verbose
+        artifacts: # defining the artifacts to be passed to each future step.
+          - target/*.jar
     - step:
         name: Deploy docker hub
         deployment: test
