@@ -17,4 +17,8 @@ pipelines:
         deployment: test
         # trigger: manual  # Uncomment to make this a manual deployment.
         script:
-          - echo "Deploying to test environment"
+          - docker login -u microbo -p ut59q)gU!T+er&@
+          - docker build -t microbo/mongodatarest:latest .
+          - docker push microbo/mongodatarest:latest
+options:
+  docker: true
