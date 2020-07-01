@@ -8,6 +8,7 @@ image: maven:3.6.1
 pipelines:
   default:
     - step:
+        name: build
         caches:
           - maven
         script: # Modify the commands below to build your repository.
@@ -15,7 +16,7 @@ pipelines:
         artifacts: # defining the artifacts to be passed to each future step.
           - target/*.jar
     - step:
-        name: Deploy docker hub
+        name: deploy
         deployment: test
         script:
           - docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD
