@@ -10,6 +10,7 @@ import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.Collection;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -49,7 +50,7 @@ class LiquidRepositoryTest {
         mongoTemplate.save(actual);
 
         // when
-        List<Liquid> names = sut.findByName("name");
+        Collection<Liquid> names = sut.findByName("name");
 
         // then
         assertThat(names).extracting("name")
